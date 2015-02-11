@@ -42,7 +42,8 @@ var Thumbnails = function() {
                             function () {
                                 callback.fail('clicking on thumbnails expand button did not work')
                             });
-                    });
+                    },
+                    callback);
             }, function() {
                 callback.fail('expand thumbnails button not found');
             });
@@ -86,7 +87,8 @@ var Thumbnails = function() {
                         } else {
                             callback.fail('thumbnails panel should be expanded');
                         }
-                    });
+                    },
+                    callback);
             });
     });
 
@@ -149,7 +151,8 @@ var Thumbnails = function() {
                                     function () {
                                         callback.fail('clicking on thumbnails collapse button did not work')
                                     });
-                            });
+                            },
+                            callback);
                     }, function() {
                         callback.fail('collapse thumbnails button not found');
                     });
@@ -169,7 +172,8 @@ var Thumbnails = function() {
                         } else {
                             callback.fail('thumbnails panel should be collapsed');
                         }
-                    });
+                    },
+                    callback);
             });
     });
 
@@ -193,7 +197,8 @@ var Thumbnails = function() {
                                                 function() {
                                                     callback.fail('clicking first thumbnail failed');
                                                 });
-                                        });
+                                        },
+                                        callback);
                                 } else {
                                     callback.fail('first thumbnail is not visible');
                                 }
@@ -220,7 +225,8 @@ var Thumbnails = function() {
                                     function() {
                                         callback.fail('clicking thumbnail increase size button failed');
                                     });
-                            });
+                            },
+                            callback);
                     },
                     function() {
                         callback.fail('thumbnail increase size button not found');
@@ -241,7 +247,8 @@ var Thumbnails = function() {
                         } else {
                             callback.fail('Size of Thumbnail should be bigger than before.');
                         }
-                    });
+                    },
+                    callback);
             });
     });
 
@@ -260,7 +267,8 @@ var Thumbnails = function() {
                                     function() {
                                         callback.fail('clicking thumbnail decrease size button failed');
                                     });
-                            });
+                            },
+                            callback);
                     },
                     function() {
                         callback.fail('thumbnail decrease size button not found');
@@ -281,7 +289,8 @@ var Thumbnails = function() {
                         } else {
                             callback.fail('Size of Thumbnail should be smaller than before.');
                         }
-                    });
+                    },
+                    callback);
             });
     });
 

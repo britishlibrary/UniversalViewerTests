@@ -74,7 +74,8 @@ var LeftToRightManifests = function() {
                                                                 callback.fail('could not get non-expanded selected loaded thumbnail');
                                                             });
                                                     });
-                                            });
+                                            },
+                                            callback);
                                     });
                             },
                             function() {

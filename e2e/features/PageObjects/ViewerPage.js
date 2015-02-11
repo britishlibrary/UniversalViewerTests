@@ -167,6 +167,22 @@ var ViewerPage = function () {
         this.canvasNextDisabledButton = function () {
             return this.find('.paging.btn.next.disabled');
         };
+
+        this.canvasZoomInButton = function() {
+            return this.find('#viewer .openseadragon-container .openseadragon-canvas .buttons .zoom.zoomin');
+        };
+
+        this.canvasZoomOutButton = function() {
+            return this.find('#viewer .openseadragon-container .openseadragon-canvas .buttons .zoom.zoomout');
+        };
+
+        this.canvasHomeButton = function() {
+            return this.find('#viewer .openseadragon-container .openseadragon-canvas .buttons .home');
+        };
+
+        this.canvasRotateButton = function() {
+            return this.find('#viewer .openseadragon-container .openseadragon-canvas .buttons .rotate.rotateright');
+        };
     }
     /* END OF NAVIGATION AND SEADRAGON PANEL */
 
@@ -478,6 +494,47 @@ var ViewerPage = function () {
                     function() {
                         callback.fail('could not find more information expand button');
                     });
+            });
+    };
+
+    this.switchPage = function(pageIdentifier, protractorCallback, continuation) {
+        if(that.showdebug) { console.log('switching page to ' + pageIdentifier); }
+        that.resetFrame(
+            function() {
+                that.searchText().then(
+                    function (searchText) {
+                        searchText.clear();
+                        searchText.sendKeys(pageIdentifier);
+                        that.resetFrame(
+                            function() {
+                                that.goButton().then(
+                                    function (go) {
+                                        go.click().then(
+                                            continuation(),
+                                            function() {
+                                                protractorCallback.fail('could not click go button');
+                                            });
+                                    },
+                                    function () {
+                                        protractorCallback.fail("button go not found");
+                                    });
+                            });
+                    },
+                    function () {
+                        protractorCallback.fail("search text box not found");
+                    });
+            });
+    };
+
+    this.selectLanguage = function(languageCode, protractorCallback, continuation) {
+        if(that.showdebug) { console.log('switching language to ' + languageCode); }
+        that.resetFrame(
+            function() {
+                // find the language selector
+                // find the right language based on the code we have been passed
+                // click the option
+                // wait for reaction
+                continuation();
             });
     };
 };

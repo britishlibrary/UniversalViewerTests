@@ -9,35 +9,11 @@ var Navigation = function() {
 
     this.Given(/^the user is viewing the Viewer on page (\w+)$/, function (arg1, callback) {
         if(showsteps) { console.log('Given the user is viewing the Viewer on page ' + arg1); }
-        vp.resetFrame(
-            function() {
-                vp.searchText().then(
-                    function (searchText) {
-                        searchText.clear();
-                        searchText.sendKeys(arg1);
-                        vp.resetFrame(
-                            function() {
-                                vp.goButton().then(
-                                    function (go) {
-                                        go.click().then(
-                                            callback,
-                                            function() {
-                                                callback.fail('could not click go button');
-                                            });
-                                    },
-                                    function () {
-                                        callback.fail("button go not found");
-                                    });
-                            });
-                    },
-                    function () {
-                        callback.fail("search text box not found");
-                    });
-            });
+        vp.switchPage(arg1, callback);
     });
 
     this.When(/^they click the Next arrow button$/, function (callback) {
-        if(showsteps) { console.log('When they click the Next arrow button - Navigation.js'); }
+        if(showsteps) { console.log('When they click the Next arrow button'); }
         vp.resetFrame(
             function() {
                 vp.navigationNextButton().then(
@@ -55,7 +31,7 @@ var Navigation = function() {
     });
 
     this.When(/^they click the Previous arrow button$/, function (callback) {
-        if(showsteps) { console.log('When they click the Previous arrow button - Navigation.js'); }
+        if(showsteps) { console.log('When they click the Previous arrow button'); }
         vp.resetFrame(
             function() {
                 vp.navigationPrevButton().then(
@@ -73,7 +49,7 @@ var Navigation = function() {
     });
 
     this.Then(/^the content of the page (\w+) is displayed to the user$/, function (arg1, callback) {
-        if(showsteps) { console.log('Then the content of the page "' + arg1 + '" is displayed to the user - Navigation.js'); }
+        if(showsteps) { console.log('Then the content of the page "' + arg1 + '" is displayed to the user'); }
         vp.resetFrame(
             function() {
                 vp.selectedThumbnailLabels().then(
@@ -273,7 +249,7 @@ var Navigation = function() {
     });
 
     this.When(/^they go to the page (\d+)$/, function (arg1, callback) {
-        if(showsteps) { console.log('When they go to the page "'+ arg1); }
+        if(showsteps) { console.log('When they go to the page '+ arg1); }
         vp.resetFrame(
             function() {
                 vp.searchText().then(
@@ -302,7 +278,7 @@ var Navigation = function() {
     });
 
     this.Then(/^the image is labeled with page (\d+)$/, function (arg1, callback) {
-        if(showsteps) { console.log('Then the image is labeled with page "'+ arg1); }
+        if(showsteps) { console.log('Then the image is labeled with page '+ arg1); }
         vp.resetFrame(
             function() {
                 vp.selectedThumbnailLabels().then(

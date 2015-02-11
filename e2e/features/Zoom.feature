@@ -6,7 +6,7 @@ Feature: Zoom
 
   Scenario: Zooming in
     Given the user is viewing the Viewer
-    When they click zoom button
+    When they click zoom in button
     Then an area of the image has a bigger display
 
   Scenario: Zooming out

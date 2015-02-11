@@ -3,7 +3,7 @@ var browserstackData = require('./browserstack-conf.json');
 exports.config = {
 
     specs: [
-        'e2e/features/RightsNotices.feature'
+        'e2e/features/LanguageSpecificCharacters.feature'
     ],
 
     capabilities: {
